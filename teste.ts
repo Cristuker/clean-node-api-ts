@@ -1,4 +1,4 @@
-function teste (): number {
-	return 1
+function teste (): void {
+  console.log('teste')
 }
 teste()
