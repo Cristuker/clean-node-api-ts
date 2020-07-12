@@ -1,10 +1,19 @@
-/* eslint-disable class-methods-use-this */
 export class SignUpController {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handle(httpRequest: any): any {
-    return {
-      statusCode: 400,
-      body: new Error('Missing param: name'),
-    };
+    if (!httpRequest.body.name) {
+      return {
+        statusCode: 400,
+        body: new Error('Missing param: name'),
+      };
+    }
+
+    if (!httpRequest.body.email) {
+      return {
+        statusCode: 400,
+        body: new Error('Missing param: email'),
+      };
+    }
+    const httpResponse = {};
+    return httpResponse;
   }
 }
