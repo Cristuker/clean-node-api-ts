@@ -1,4 +1,5 @@
 import { HttpRequest, HttpResponse } from '../protocols/http';
+import { MissingParamError } from '../erros/missing-param-error';
 
 export class SignUpController {
   // eslint-disable-next-line consistent-return
@@ -6,14 +7,14 @@ export class SignUpController {
     if (!httpRequest.body.name) {
       return {
         statusCode: 400,
-        body: new Error('Missing param: name'),
+        body: new MissingParamError('name'),
       };
     }
 
     if (!httpRequest.body.email) {
       return {
         statusCode: 400,
-        body: new Error('Missing param: email'),
+        body: new MissingParamError('email'),
       };
     }
   }
