@@ -5,7 +5,7 @@ import { badRequest } from '../helpers/http-helper';
 export class SignUpController {
   // eslint-disable-next-line consistent-return
   handle(httpRequest: HttpRequest): HttpResponse {
-    const requiredFields = ['name', 'email'];
+    const requiredFields = ['name', 'email', 'password', 'passwordConfirmation'];
 
     // eslint-disable-next-line no-restricted-syntax
     for (const field of requiredFields) {
