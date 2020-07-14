@@ -6,15 +6,28 @@ interface SutTypes {
   sut: SignUpController,
   emailValidatorStb: EmailValidator
 }
-
-const makeSut = (): SutTypes => {
+const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isValid(email: string): boolean {
       return true;
     }
   }
-  const emailValidatorStb = new EmailValidatorStub();
+  return new EmailValidatorStub();
+}
+
+const makeEmailValidatorWhitError = (): EmailValidator => {
+  class EmailValidatorStub implements EmailValidator {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    isValid(email: string): boolean {
+      throw new Error();
+    }
+  }
+  return new EmailValidatorStub();
+}
+
+const makeSut = (): SutTypes => {
+  const emailValidatorStb = makeEmailValidator();
   const sut = new SignUpController(emailValidatorStb);
   return {
     sut,
@@ -110,13 +123,7 @@ describe('SignUp Controller', () => {
     expect(isValidSpy).toHaveBeenCalledWith('any_email@mail.com');
   });
   test('Should return 500 if emailValidator throws', () => {
-    class EmailValidatorStub implements EmailValidator {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      isValid(email: string): boolean {
-        throw new Error();
-      }
-    }
-    const emailValidatorStb = new EmailValidatorStub();
+    const emailValidatorStb = makeEmailValidatorWhitError();
     const sut = new SignUpController(emailValidatorStb);
     const httpRequest = {
       body: {
