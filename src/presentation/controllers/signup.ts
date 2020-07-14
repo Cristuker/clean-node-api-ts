@@ -1,7 +1,10 @@
 import {
-  HttpRequest, HttpResponse, Controller, EmailValidator,
+  HttpRequest,
+  HttpResponse,
+  Controller,
+  EmailValidator,
 } from '../protocols';
-import { MissingParamError, InvalidParamError } from '../erros';
+import { MissingParamError, InvalidParamError } from '../errors';
 import { badRequest, serverError } from '../helpers/http-helper';
 
 export class SignUpController implements Controller {
@@ -11,7 +14,6 @@ export class SignUpController implements Controller {
     this.emailValidator = emailValidator;
   }
 
-  // eslint-disable-next-line consistent-return
   handle(httpRequest: HttpRequest): HttpResponse {
     try {
       const requiredFields = ['name', 'email', 'password', 'passwordConfirmation'];
@@ -28,6 +30,10 @@ export class SignUpController implements Controller {
       if (!isValid) {
         return badRequest(new InvalidParamError('email'));
       }
+      return {
+        statusCode: 200,
+        body: 'is Working',
+      };
     } catch (error) {
       return serverError();
     }
