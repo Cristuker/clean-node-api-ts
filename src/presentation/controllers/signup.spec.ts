@@ -9,10 +9,10 @@ const makeAddAccount = (): AddAccount => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     add(account: AddAccountModel): AccountModel {
       const fakeAccount = {
-        id: 'validId',
-        name: 'any_name',
-        email: 'any_email@mail.com',
-        password: 'any_pass'
+        id: 'valid_id',
+        name: 'valid_name',
+        email: 'valid_email@mail.com',
+        password: 'valid_pass'
       }
       return fakeAccount
     }
@@ -31,8 +31,8 @@ const makeEmailValidator = (): EmailValidator => {
 }
 
 interface SutTypes {
-  sut: SignUpController,
-  emailValidatorStb: EmailValidator,
+  sut: SignUpController
+  emailValidatorStb: EmailValidator
   addAccountStub: AddAccount
 }
 
@@ -172,16 +172,17 @@ describe('SignUp Controller', () => {
     const addSpy = jest.spyOn(addAccountStub, 'add')
     const httpRequest = {
       body: {
-        name: 'any_name',
-        email: 'any_email@mail.com',
-        password: 'any_pass',
+        name: 'valid_name',
+        email: 'valid_email@mail.com',
+        password: 'valid_pass',
+        passwordConfirmation: 'valid_pass'
       },
     };
     sut.handle(httpRequest)
-    expect(addSpy).toHaveBeenLastCalledWith({
-      name: 'any_name',
-      email: 'any_email@mail.com',
-      password: 'any_pass',
+    expect(addSpy).toHaveBeenCalledWith({
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: 'valid_pass'
     })
   });
 });
