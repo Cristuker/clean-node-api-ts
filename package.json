@@ -1,38 +1,49 @@
 {
-  "name": "clean-node-api-ts",
-  "version": "1.0.0",
-  "description": "node-ts repo",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest --passWithNoTests --watch",
-    "test:staged": "jest --passWithNoTests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Cristuker/clean-node-api-ts.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Cristuker/clean-node-api-ts/issues"
-  },
-  "homepage": "https://github.com/Cristuker/clean-node-api-ts#readme",
-  "devDependencies": {
-    "@types/jest": "^26.0.4",
-    "@types/node": "^14.0.22",
-    "@typescript-eslint/eslint-plugin": "^3.6.0",
-    "eslint": "^7.4.0",
-    "eslint-config-airbnb-typescript": "^8.0.2",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "git-commit-msg-linter": "^2.4.4",
-    "husky": "^4.2.5",
-    "jest": "^26.1.0",
-    "lint-staged": "^10.2.11",
-    "ts-jest": "^26.1.1",
-    "typescript": "^3.9.6"
-  }
+    "name": "clean-node-api-ts",
+    "version": "1.0.0",
+    "description": "API de enquentes feita em Typescript",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+        "test:verbose": "jest --passWithNoTests --runInBand",
+        "test:unit": "npm test -- --watch -c jest-unit-config.js",
+        "test:integration": "npm test -- --watch -c jest-integration-config.js",
+        "test:staged": "npm test -- --findRelatedTests",
+        "test:ci": "npm test -- --coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Cristuker/clean-node-api-ts.git"
+    },
+    "keywords": [
+        "typescript",
+        "node",
+        "enquete",
+        "questions",
+        "tdd",
+        "jest"
+    ],
+    "author": "Cristian Silva",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Cristuker/clean-node-api-ts/issues"
+    },
+    "homepage": "https://github.com/Cristuker/clean-node-api-ts#readme",
+    "devDependencies": {
+        "@types/jest": "^26.0.4",
+        "@types/node": "^14.0.22",
+        "@typescript-eslint/eslint-plugin": "^3.6.0",
+        "eslint": "^7.4.0",
+        "eslint-config-airbnb-typescript": "^8.0.2",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "git-commit-msg-linter": "^2.4.4",
+        "husky": "^4.2.5",
+        "jest": "^26.1.0",
+        "lint-staged": "^10.2.11",
+        "ts-jest": "^26.1.1",
+        "typescript": "^3.9.6"
+    }
 }
