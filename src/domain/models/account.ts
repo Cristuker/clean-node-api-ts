@@ -1,6 +1,6 @@
-export interface AccountModel{
-  id: string,
-  name: string,
-  email: string,
+export type AccountModel = {
+  id: string
+  name: string
+  email: string
   password: string
-}
+};
