@@ -4,3 +4,4 @@ coverage
 globalConfig.json
 globalConfig
 /globalConfig.json/
+./globalConfig.json
